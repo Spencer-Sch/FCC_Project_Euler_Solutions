@@ -1,56 +1,83 @@
-const palindromeFinder = (number) => {
-    
-    let matchFoundCount = 0;
-    const numStr = number.toString();
-    const strLength = number.toString().length;
+// Updated version
 
-    if (strLength % 2 === 0) {
-        // number is even digits long
-        for (let i = 0; i < strLength / 2; i++) {
-            if (numStr[i] === numStr[(numStr.length - (i+1))]) {
-                matchFoundCount++;
-            }
-        }
+const palindromeFinder = (numStr) => {
+  if (numStr.length <= 1) return true;
 
-        if (matchFoundCount === strLength / 2) {
-            return true;
-        }
-    } else {
-        //number is odd digits long
-        for (let i = 0; i < ((strLength - 1) / 2); i++) {
-            if (numStr[i] === numStr[(numStr.length - (i+1))]) {
-                matchFoundCount++;
-            }
-        }
-    
-        if (matchFoundCount === (strLength - 1) / 2) {
-            return true;
-        }
-    }
+  if (numStr[0] === numStr[numStr.length - 1]) {
+    return palindromeFinder(numStr.slice(1, numStr.length - 1));
+  } else return false;
 };
-
 
 const largestPalindromeProduct = (n) => {
+  let num = 10 ** n - 1;
+  let maxPal = 0;
 
-    let num = (10 ** n) - 1;
-    const palArr = [];
-    let largestPal = 0;
-
-    for (let i = num; i > 0; i--) {
-
-        for (let j = i; j > 0; j--) {
-            let product = j * i;
-            if (palindromeFinder(product)) {
-                palArr.push(product);
-            }
-        }
+  for (let i = num; i > 0; i--) {
+    for (let j = i; j > 0; j--) {
+      let product = j * i;
+      if (palindromeFinder(product.toString())) {
+        if (product > maxPal) maxPal = product;
+      }
     }
-    for (let num of palArr) {
-        if (num > largestPal) {
-            largestPal = num;
-        }
-    }
-    return largestPal;
+  }
+  return maxPal;
 };
 
-largestPalindromeProduct(2);
+largestPalindromeProduct(3);
+
+/////////////////////////////////////////////////////////////
+// Old version
+/////////////////////////////////////////////////////////////
+
+// const palindromeFinder = (number) => {
+//   let matchFoundCount = 0;
+//   const numStr = number.toString();
+//   const strLength = number.toString().length;
+
+//   if (strLength % 2 === 0) {
+//     // number is even digits long
+//     for (let i = 0; i < strLength / 2; i++) {
+//       if (numStr[i] === numStr[numStr.length - (i + 1)]) {
+//         matchFoundCount++;
+//       }
+//     }
+
+//     if (matchFoundCount === strLength / 2) {
+//       return true;
+//     }
+//   } else {
+//     //number is odd digits long
+//     for (let i = 0; i < (strLength - 1) / 2; i++) {
+//       if (numStr[i] === numStr[numStr.length - (i + 1)]) {
+//         matchFoundCount++;
+//       }
+//     }
+
+//     if (matchFoundCount === (strLength - 1) / 2) {
+//       return true;
+//     }
+//   }
+// };
+
+// const largestPalindromeProduct = (n) => {
+//   let num = 10 ** n - 1;
+//   const palArr = [];
+//   let largestPal = 0;
+
+//   for (let i = num; i > 0; i--) {
+//     for (let j = i; j > 0; j--) {
+//       let product = j * i;
+//       if (palindromeFinder(product)) {
+//         palArr.push(product);
+//       }
+//     }
+//   }
+//   for (let num of palArr) {
+//     if (num > largestPal) {
+//       largestPal = num;
+//     }
+//   }
+//   return largestPal;
+// };
+
+// largestPalindromeProduct(2);
