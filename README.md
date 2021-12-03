@@ -24,7 +24,7 @@ My answers for the Project Euler code challenges on [FreeCodeCamp.com](https://w
 #### My Solution: </br>
 
 <details>
-  <summary>Click to expand!</summary>
+  <summary>Click to expand</summary>
   
 ```javascript
 function multiplesOf3and5(number) {
@@ -58,7 +58,7 @@ multiplesOf3and5(1000);
 #### My Solution: </br>
 
 <details>
-<summary>Click to expand!</summary>
+<summary>Click to expand</summary>
 
 ```javascript
 function fiboEvenSum(n) {
@@ -99,7 +99,7 @@ fiboEvenSum(10);
 #### My Solution: </br>
 
 <details>
-<summary>Click to expand!</summary>
+<summary>Click to expand</summary>
 
 ```javascript
 function largestPrimeFactor(number) {
@@ -141,7 +141,7 @@ largestPrimeFactor(13195);
 #### My Solution: </br>
 
 <details>
-<summary>Click to expand!</summary>
+<summary>Click to expand</summary>
 
 ```javascript
 const palindromeFinder = (numStr) => {
